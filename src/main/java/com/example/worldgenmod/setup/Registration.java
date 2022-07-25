@@ -35,10 +35,10 @@ public class Registration {
     public static final BlockBehaviour.Properties ORE_PROPS = BlockBehaviour.Properties.of(Material.STONE).strength(2f);
     public static final Item.Properties ITEM_PROPS = new Item.Properties().tab(ModSetup.ITEM_GROUP);
 
-    public static final RegistryObject<Block> WEIRD_ORE_OVERWORLD = BLOCKS.register("weird_ore", () -> new Block(ORE_PROPS));
+    public static final RegistryObject<Block> WEIRD_ORE_OVERWORLD = BLOCKS.register("weird_ore_overworld", () -> new Block(ORE_PROPS));
     public static final RegistryObject<Item> WEIRD_ORE_OVERWORLD_ITEM = fromBlock(WEIRD_ORE_OVERWORLD);
 
-    public static final RegistryObject<Block> WEIRD_ORE_DEEPSLATE = BLOCKS.register("weird_ore", () -> new Block(ORE_PROPS));
+    public static final RegistryObject<Block> WEIRD_ORE_DEEPSLATE = BLOCKS.register("weird_ore_deepslate", () -> new Block(ORE_PROPS));
     public static final RegistryObject<Item> WEIRD_ORE_DEEPSLATE_ITEM = fromBlock(WEIRD_ORE_DEEPSLATE);
 
     public static final RegistryObject<Item> RAW_WEIRD_ORE_CHUNK = ITEMS.register("weird_ore_chunk", () -> new Item(ITEM_PROPS));

@@ -15,8 +15,8 @@ public class TutItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        withExistingParent(Registration.WEIRD_ORE_DEEPSLATE_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_overworld"));
-        withExistingParent(Registration.WEIRD_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_deepslate"));
+        withExistingParent(Registration.WEIRD_ORE_DEEPSLATE_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_deepslate"));
+        withExistingParent(Registration.WEIRD_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_overworld"));
 
         singleTexture(Registration.WEIRD_ORE_INGOT.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
