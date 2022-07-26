@@ -23,8 +23,8 @@ import static com.example.worldgenmod.WorldGenMod.MODID;
 
 public class Registration {
 
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     public static void init() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -42,7 +42,7 @@ public class Registration {
     public static final RegistryObject<Item> WEIRD_ORE_DEEPSLATE_ITEM = fromBlock(WEIRD_ORE_DEEPSLATE);
 
     public static final RegistryObject<Item> RAW_WEIRD_ORE_CHUNK = ITEMS.register("weird_ore_chunk", () -> new Item(ITEM_PROPS));
-    public static final RegistryObject<Item> WEIRD_ORE_INGOT = ITEMS.register("weird_ore_ingot", () -> new Item(ITEM_PROPS));
+    public static final RegistryObject<Item> WEIRD_INGOT = ITEMS.register("weird_ore_ingot", () -> new Item(ITEM_PROPS));
 
     public static final TagKey<Block> WEIRD_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(WorldGenMod.MODID, "weird_ore"));
     public static final TagKey<Item> WEIRD_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(WorldGenMod.MODID, "weird_ore"));

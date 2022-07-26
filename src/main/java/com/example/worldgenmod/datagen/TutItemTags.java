@@ -21,11 +21,14 @@ public class TutItemTags extends ItemTagsProvider {
                 .add(Registration.WEIRD_ORE_OVERWORLD_ITEM.get());
 
         tag(Tags.Items.INGOTS)
-                .add(Registration.WEIRD_ORE_INGOT.get());
+                .add(Registration.WEIRD_INGOT.get());
+        tag(Registration.WEIRD_ORE_ITEM)
+                .add(Registration.WEIRD_ORE_OVERWORLD_ITEM.get())
+                .add(Registration.WEIRD_ORE_DEEPSLATE_ITEM.get());
     }
 
     @Override
     public String getName() {
-        return "Tutorial Tags";
+        return "tutorialtags";
     }
 }

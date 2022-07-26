@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "worldgenmod:weird_ore_chunk"
+  },
+  "result": "worldgenmod:weird_ore_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

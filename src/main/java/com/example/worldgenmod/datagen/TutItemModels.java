@@ -18,7 +18,7 @@ public class TutItemModels extends ItemModelProvider {
         withExistingParent(Registration.WEIRD_ORE_DEEPSLATE_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_deepslate"));
         withExistingParent(Registration.WEIRD_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_overworld"));
 
-        singleTexture(Registration.WEIRD_ORE_INGOT.get().getRegistryName().getPath(),
+        singleTexture(Registration.WEIRD_INGOT.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 ("layer0"),
                 modLoc("items/weird_ore_ingot"));

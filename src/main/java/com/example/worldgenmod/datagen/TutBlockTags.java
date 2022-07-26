@@ -32,6 +32,6 @@ public class TutBlockTags extends BlockTagsProvider {
 
     @Override
     public String getName() {
-        return "Tutorial Tags";
+        return "tutorialtags";
     }
 }
