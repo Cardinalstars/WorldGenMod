@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "worldgenmod:weird_ore_overworld",
-    "worldgenmod:weird_ore_deepslate"
+    "worldgenmod:weird_ore_deepslate",
+    "worldgenmod:generator",
+    "worldgenmod:test_block_orientation"
   ]
 }

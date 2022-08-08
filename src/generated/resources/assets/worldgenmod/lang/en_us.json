@@ -1,4 +1,5 @@
 {
+  "block.worldgenmod.generator": "Generator",
   "block.worldgenmod.weird_ore_deepslate": "Weird Deepslate Ore",
   "block.worldgenmod.weird_ore_overworld": "Weird Ore",
   "item.worldgenmod.weird_ore_chunk": "Weird Raw Chunk",

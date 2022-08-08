@@ -22,5 +22,7 @@ public class TutLanguageProvider extends LanguageProvider {
         add(Registration.WEIRD_ORE_DEEPSLATE.get(), "Weird Deepslate Ore");
         add(Registration.WEIRD_INGOT.get(), "Weird Ingot");
         add(Registration.RAW_WEIRD_ORE_CHUNK.get(), "Weird Raw Chunk");
+        add(Registration.GENERATOR.get(), "Generator");
+        add(Registration.ORIENTATION_TEST_BLOCK.get(), "Test Block for Orientation");
     }
 }

@@ -18,10 +18,13 @@ public class TutBlockTags extends BlockTagsProvider {
     protected void addTags() {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(Registration.WEIRD_ORE_OVERWORLD.get())
-                .add(Registration.WEIRD_ORE_DEEPSLATE.get());
+                .add(Registration.WEIRD_ORE_DEEPSLATE.get())
+                .add(Registration.GENERATOR.get())
+                .add(Registration.ORIENTATION_TEST_BLOCK.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(Registration.WEIRD_ORE_OVERWORLD.get())
-                .add(Registration.WEIRD_ORE_DEEPSLATE.get());
+                .add(Registration.WEIRD_ORE_DEEPSLATE.get())
+                .add(Registration.GENERATOR.get());
         tag(Tags.Blocks.ORES)
                 .add(Registration.WEIRD_ORE_OVERWORLD.get())
                 .add(Registration.WEIRD_ORE_DEEPSLATE.get());

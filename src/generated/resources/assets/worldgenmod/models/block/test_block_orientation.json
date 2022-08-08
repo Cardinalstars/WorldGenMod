@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "worldgenmod:block/test_front_face",
+    "south": "worldgenmod:block/test_block_orientation",
+    "east": "worldgenmod:block/test_block_orientation",
+    "west": "worldgenmod:block/test_block_orientation",
+    "up": "worldgenmod:block/test_block_orientation",
+    "down": "worldgenmod:block/test_block_orientation"
+  }
+}

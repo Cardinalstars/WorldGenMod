@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 public class WorldGenMod {
 
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "worldgenmod";
 
     public WorldGenMod() {

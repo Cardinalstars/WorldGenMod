@@ -15,15 +15,23 @@ public class ModBlockLootTables extends TestLoot {
     protected void addTables() {
 
         this.add(Registration.WEIRD_ORE_DEEPSLATE.get(),
-                (block) -> createSimpleTable(
+                (block) -> createFortuneAffectItemDrop(
                         "werid_ore_deepslate_chunk1",
-                        Registration.RAW_WEIRD_ORE_CHUNK.get()));
+                        Registration.WEIRD_ORE_DEEPSLATE.get(),
+                        Registration.RAW_WEIRD_ORE_CHUNK.get(),
+                        1, 10));
 
         this.add(Registration.WEIRD_ORE_OVERWORLD.get(),
-                (block) -> createSimpleTable(
+                (block) -> createFortuneAffectItemDrop(
                         "werid_ore_deepslate_chunk2",
-                        Registration.RAW_WEIRD_ORE_CHUNK.get()));
+                        Registration.WEIRD_ORE_OVERWORLD.get(),
+                        Registration.RAW_WEIRD_ORE_CHUNK.get(),
+                        1, 3));
 
+        this.add(Registration.GENERATOR.get(),
+                (block) -> createSimpleTable("generator", Registration.GENERATOR_ITEM.get()));
+        this.add(Registration.ORIENTATION_TEST_BLOCK.get(),
+                (block) -> createSimpleTable("orientation_test_block", Registration.TEST_BLOCK_ITEM.get()));
     }
 
     @Override
