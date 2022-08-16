@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "worldgenmod:block/mining_explosives",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "worldgenmod:block/mining_explosives"
+    },
+    "facing=north": {
+      "model": "worldgenmod:block/mining_explosives",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "worldgenmod:block/mining_explosives",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "worldgenmod:block/mining_explosives",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "worldgenmod:block/mining_explosives",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

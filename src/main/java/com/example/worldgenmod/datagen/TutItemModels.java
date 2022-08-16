@@ -19,6 +19,7 @@ public class TutItemModels extends ItemModelProvider {
         withExistingParent(Registration.WEIRD_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/weird_ore_overworld"));
         withExistingParent(Registration.GENERATOR.get().getRegistryName().getPath(), modLoc("block/generator"));
 
+
         singleTexture(Registration.WEIRD_INGOT.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 ("layer0"),
@@ -29,6 +30,7 @@ public class TutItemModels extends ItemModelProvider {
                 ("layer0"),
                 modLoc("items/weird_ore_chunk"));
 
-        withExistingParent(Registration.ORIENTATION_TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_block"));
+        withExistingParent(Registration.ORIENTATION_TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_orientation_block"));
+        withExistingParent(Registration.MINING_EXPLOSIVES.get().getRegistryName().getPath(), modLoc("block/mining_explosives"));
     }
 }

@@ -1,5 +1,7 @@
 {
   "block.worldgenmod.generator": "Generator",
+  "block.worldgenmod.mining_explosive": "Mining Explosives",
+  "block.worldgenmod.test_block_orientation": "Test Block for Orientation",
   "block.worldgenmod.weird_ore_deepslate": "Weird Deepslate Ore",
   "block.worldgenmod.weird_ore_overworld": "Weird Ore",
   "item.worldgenmod.weird_ore_chunk": "Weird Raw Chunk",

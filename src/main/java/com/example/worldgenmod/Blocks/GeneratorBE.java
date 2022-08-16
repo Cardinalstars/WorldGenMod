@@ -250,14 +250,14 @@ public class GeneratorBE extends BlockEntity {
 
     // The getUpdateTag()/handleUpdateTag() pair is called whenever the client receives a new chunk
     // it hasn't seen before. i.e. the chunk is loaded
-
+    // called server side
     @Override
     public CompoundTag getUpdateTag() {
         CompoundTag tag = super.getUpdateTag();
         saveClientData(tag);
         return tag;
     }
-
+    // called client side
     @Override
     public void handleUpdateTag(CompoundTag tag) {
         if (tag != null) {
@@ -268,13 +268,14 @@ public class GeneratorBE extends BlockEntity {
     // The getUpdatePacket()/onDataPacket() pair is used when a block update happens on the client
     // (a blockstate change or an explicit notificiation of a block update from the server). It's
     // easiest to implement them based on getUpdateTag()/handleUpdateTag()
-
+    // called serverside
     @Nullable
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
+    // called clientside
     @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         // This is called client side: remember the current state of the values that we're interested in

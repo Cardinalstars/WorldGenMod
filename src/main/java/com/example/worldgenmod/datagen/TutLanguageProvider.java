@@ -24,5 +24,6 @@ public class TutLanguageProvider extends LanguageProvider {
         add(Registration.RAW_WEIRD_ORE_CHUNK.get(), "Weird Raw Chunk");
         add(Registration.GENERATOR.get(), "Generator");
         add(Registration.ORIENTATION_TEST_BLOCK.get(), "Test Block for Orientation");
+        add(Registration.MINING_EXPLOSIVES.get(), "Mining Explosives");
     }
 }

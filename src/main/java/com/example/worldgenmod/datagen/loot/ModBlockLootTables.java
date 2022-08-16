@@ -32,6 +32,8 @@ public class ModBlockLootTables extends TestLoot {
                 (block) -> createSimpleTable("generator", Registration.GENERATOR_ITEM.get()));
         this.add(Registration.ORIENTATION_TEST_BLOCK.get(),
                 (block) -> createSimpleTable("orientation_test_block", Registration.TEST_BLOCK_ITEM.get()));
+        this.add(Registration.MINING_EXPLOSIVES.get(),
+                (block) -> createSimpleTable("mining_explosives", Registration.MINING_EXPLOSIVES_ITEM.get()));
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.example.worldgenmod.setup;
 
-import com.example.worldgenmod.Blocks.GeneratorBE;
-import com.example.worldgenmod.Blocks.GeneratorBlock;
-import com.example.worldgenmod.Blocks.OrientationTestBlock;
+import com.example.worldgenmod.Blocks.*;
 import com.example.worldgenmod.WorldGenMod;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -11,11 +9,8 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -73,6 +68,10 @@ public class Registration {
     // Generator Block Entity Registration
     public static final RegistryObject<BlockEntityType<GeneratorBE>> GENERATOR_BE = BLOCK_ENTITIES.register("generator", () ->
         BlockEntityType.Builder.of(GeneratorBE::new, GENERATOR.get()).build(null));
+
+    // Mining Block Registration
+    public static final RegistryObject<MiningExplosives> MINING_EXPLOSIVES = BLOCKS.register("mining_explosive", MiningExplosives::new);
+    public static final RegistryObject<Item> MINING_EXPLOSIVES_ITEM = fromBlock(MINING_EXPLOSIVES);
 
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPS));

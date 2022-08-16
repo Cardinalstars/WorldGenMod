@@ -121,7 +121,6 @@ public class GeneratorBakedModel implements IDynamicBakedModel {
         float l = 0;
         float r = 1;
         float p = 13f / 16f; // Relative position of panel
-
         float bl = 1f/16f;   // Left side of button
         float br = 7f/16f;   // Right side of button
 
