@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "worldgenmod:mining_explosive"
+          "name": "worldgenmod:mining_explosives"
         }
       ]
     }

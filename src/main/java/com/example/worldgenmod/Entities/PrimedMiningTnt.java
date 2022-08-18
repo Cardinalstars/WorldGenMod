@@ -1,5 +1,6 @@
 package com.example.worldgenmod.Entities;
 
+import com.example.worldgenmod.setup.Registration;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -17,20 +18,21 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
-public class PrimedMiningTntLossless extends Entity {
+import static com.example.worldgenmod.setup.Registration.PRIMED_MINING_TNT;
+
+public class PrimedMiningTnt extends Entity {
 
     private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedTnt.class, EntityDataSerializers.INT);
     private static final int DEFAULT_FUSE_TIME = 80;
     @Nullable
     private LivingEntity owner;
 
-    public PrimedMiningTntLossless(EntityType<?> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public PrimedMiningTnt(EntityType<? extends Entity> entityType, Level level) {
+        super(entityType, level);
         this.blocksBuilding = true;
     }
-
-    public PrimedMiningTntLossless(Level pLevel, double pX, double pY, double pZ, @Nullable LivingEntity pOwner) {
-        this(EntityType.TNT, pLevel);
+    public PrimedMiningTnt(Level pLevel, double pX, double pY, double pZ, @Nullable LivingEntity pOwner) {
+        this(Registration.PRIMED_MINING_TNT.get(), pLevel);
         this.setPos(pX, pY, pZ);
         double d0 = pLevel.random.nextDouble() * (double)((float)Math.PI * 2F);
         this.setDeltaMovement(-Math.sin(d0) * 0.02D, (double)0.2F, -Math.cos(d0) * 0.02D);

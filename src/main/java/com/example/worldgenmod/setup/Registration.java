@@ -1,10 +1,13 @@
 package com.example.worldgenmod.setup;
 
 import com.example.worldgenmod.Blocks.*;
+import com.example.worldgenmod.Entities.PrimedMiningTnt;
 import com.example.worldgenmod.WorldGenMod;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -27,6 +30,7 @@ public class Registration {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
 
 
     public static void init() {
@@ -35,6 +39,7 @@ public class Registration {
         ITEMS.register(bus);
         BLOCK_ENTITIES.register(bus);
         CONTAINERS.register(bus);
+        ENTITIES.register(bus);
     }
 
     // Properties Registration
@@ -70,8 +75,18 @@ public class Registration {
         BlockEntityType.Builder.of(GeneratorBE::new, GENERATOR.get()).build(null));
 
     // Mining Block Registration
-    public static final RegistryObject<MiningExplosives> MINING_EXPLOSIVES = BLOCKS.register("mining_explosive", MiningExplosives::new);
+    public static final RegistryObject<MiningExplosives> MINING_EXPLOSIVES = BLOCKS.register("mining_explosives", MiningExplosives::new);
     public static final RegistryObject<Item> MINING_EXPLOSIVES_ITEM = fromBlock(MINING_EXPLOSIVES);
+
+    public static final RegistryObject<EntityType<PrimedMiningTnt>> PRIMED_MINING_TNT =
+            ENTITIES.register("primed_mining_tnt",
+            () -> EntityType.Builder.<PrimedMiningTnt>of(PrimedMiningTnt::new, MobCategory.MISC)
+                    .sized(0.98F, 0.98F)
+                    .clientTrackingRange(10)
+                    .updateInterval(10)
+                    .fireImmune()
+                    .build("primed_mining_tnt"));
+
 
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPS));

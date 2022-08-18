@@ -1,6 +1,6 @@
 package com.example.worldgenmod.Blocks;
 
-import com.example.worldgenmod.Entities.PrimedMiningTntLossless;
+import com.example.worldgenmod.Entities.PrimedMiningTnt;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -61,13 +61,12 @@ public class MiningExplosives extends Block implements IForgeBlock{
     @Override
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
         if (!level.isClientSide()) {
-            PrimedMiningTntLossless primedMiningtnt = new PrimedMiningTntLossless(level, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, igniter);
+            PrimedMiningTnt primedMiningtnt = new PrimedMiningTnt(level, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, igniter);
             level.addFreshEntity(primedMiningtnt);
             level.playSound((Player)null, primedMiningtnt.getX(), primedMiningtnt.getY(), primedMiningtnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
         }
     }
-
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
