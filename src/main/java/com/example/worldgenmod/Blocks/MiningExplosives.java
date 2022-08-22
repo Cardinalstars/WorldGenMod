@@ -1,6 +1,6 @@
 package com.example.worldgenmod.Blocks;
 
-import com.example.worldgenmod.Entities.PrimedMiningTnt;
+import com.example.worldgenmod.Entities.PrimedMiningExplosives;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,20 +28,25 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.extensions.IForgeBlock;
+
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+import static com.example.worldgenmod.WorldGenMod.LOGGER;
 public class MiningExplosives extends Block implements IForgeBlock{
 
-    public static final String MESSAGE_MINING = "message.mining";
+    public static final String MESSAGE_MINING = "Mining Explosives";
+
 
     public MiningExplosives() {
         super(Properties.of(Material.EXPLOSIVE)
-                .sound(SoundType.STONE)
-                .strength(2.0f));
+                .sound(SoundType.GRASS)
+                .instabreak());
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void appendHoverText(ItemStack stack, @javax.annotation.Nullable BlockGetter reader, List<Component> list, TooltipFlag flags) {
         list.add(new TranslatableComponent(MESSAGE_MINING).withStyle(ChatFormatting.BLUE));
     }
@@ -61,9 +66,9 @@ public class MiningExplosives extends Block implements IForgeBlock{
     @Override
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
         if (!level.isClientSide()) {
-            PrimedMiningTnt primedMiningtnt = new PrimedMiningTnt(level, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, igniter);
-            level.addFreshEntity(primedMiningtnt);
-            level.playSound((Player)null, primedMiningtnt.getX(), primedMiningtnt.getY(), primedMiningtnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            PrimedMiningExplosives primedMiningExplosives = new PrimedMiningExplosives(level, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D);
+            level.addFreshEntity(primedMiningExplosives);
+            level.playSound((Player)null, primedMiningExplosives.getX(), primedMiningExplosives.getY(), primedMiningExplosives.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
         }
     }

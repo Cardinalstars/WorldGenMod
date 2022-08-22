@@ -10,37 +10,30 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 
-import static com.example.worldgenmod.setup.Registration.PRIMED_MINING_TNT;
+public class PrimedMiningExplosives extends Entity {
 
-public class PrimedMiningTnt extends Entity {
+    private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedMiningExplosives.class, EntityDataSerializers.INT);
+    private static final int DEFAULT_FUSE_TIME = 20;
 
-    private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedTnt.class, EntityDataSerializers.INT);
-    private static final int DEFAULT_FUSE_TIME = 80;
-    @Nullable
-    private LivingEntity owner;
-
-    public PrimedMiningTnt(EntityType<? extends Entity> entityType, Level level) {
+    public PrimedMiningExplosives(EntityType<? extends Entity> entityType, Level level) {
         super(entityType, level);
         this.blocksBuilding = true;
     }
-    public PrimedMiningTnt(Level pLevel, double pX, double pY, double pZ, @Nullable LivingEntity pOwner) {
-        this(Registration.PRIMED_MINING_TNT.get(), pLevel);
+    public PrimedMiningExplosives(Level pLevel, double pX, double pY, double pZ) {
+        this(Registration.PRIMED_MINING_EXPLOSIVES.get(), pLevel);
         this.setPos(pX, pY, pZ);
         double d0 = pLevel.random.nextDouble() * (double)((float)Math.PI * 2F);
         this.setDeltaMovement(-Math.sin(d0) * 0.02D, (double)0.2F, -Math.cos(d0) * 0.02D);
-        this.setFuse(80);
+        this.setFuse(DEFAULT_FUSE_TIME);
         this.xo = pX;
         this.yo = pY;
         this.zo = pZ;
-        this.owner = pOwner;
+
     }
 
     public boolean isPickable() {
@@ -74,17 +67,16 @@ public class PrimedMiningTnt extends Entity {
     }
 
     protected void explode() {
-        this.level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 10.0F, Explosion.BlockInteraction.BREAK);
+        this.level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 15.0F, Explosion.BlockInteraction.BREAK);
     }
 
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(DATA_FUSE_ID, 80);
+        this.entityData.define(DATA_FUSE_ID, DEFAULT_FUSE_TIME);
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
-
     }
 
     @Override

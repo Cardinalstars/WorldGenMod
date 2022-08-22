@@ -3,9 +3,9 @@
   "textures": {
     "down": "worldgenmod:block/mining_explosives_bottom",
     "up": "worldgenmod:block/mining_explosives_top",
-    "north": "worldgenmod:block/mining_explosives_nontarget_side",
-    "south": "worldgenmod:block/mining_explosives_nontarget_side",
-    "east": "worldgenmod:block/mining_explosives_nontarget_side",
-    "west": "worldgenmod:block/mining_explosives_nontarget_side"
+    "north": "worldgenmod:block/mining_explosives_side",
+    "south": "worldgenmod:block/mining_explosives_side",
+    "east": "worldgenmod:block/mining_explosives_side",
+    "west": "worldgenmod:block/mining_explosives_side"
   }
 }

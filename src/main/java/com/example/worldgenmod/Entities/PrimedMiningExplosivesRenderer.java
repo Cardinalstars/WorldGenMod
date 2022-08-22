@@ -12,15 +12,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
-public class PrimingMiningTntRenderer extends EntityRenderer<PrimedMiningTnt> {
+public class PrimedMiningExplosivesRenderer extends EntityRenderer<PrimedMiningExplosives> {
 
-    protected PrimingMiningTntRenderer(EntityRendererProvider.Context pContext) {
+    public PrimedMiningExplosivesRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
         this.shadowRadius = 0.5F;
     }
 
     @Override
-    public void render(PrimedMiningTnt tnt, float entityYaw, float partialTick, PoseStack matrix, MultiBufferSource renderer, int light) {
+    public void render(PrimedMiningExplosives tnt, float entityYaw, float partialTick, PoseStack matrix, MultiBufferSource renderer, int light) {
         matrix.pushPose();
         matrix.translate(0, 0.5, 0);
         if (tnt.getFuse() - partialTick + 1.0F < 10.0F) {
@@ -42,7 +42,7 @@ public class PrimingMiningTntRenderer extends EntityRenderer<PrimedMiningTnt> {
 
     @NotNull
     @Override
-    public ResourceLocation getTextureLocation(@NotNull PrimedMiningTnt entity) {
+    public ResourceLocation getTextureLocation(@NotNull PrimedMiningExplosives entity) {
         return TextureAtlas.LOCATION_BLOCKS;
     }
 }

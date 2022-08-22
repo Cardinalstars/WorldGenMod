@@ -2,7 +2,6 @@ package com.example.worldgenmod.event;
 
 import com.example.worldgenmod.WorldGenMod;
 import com.example.worldgenmod.event.loot.SilkTouchTntModifer;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,7 +18,7 @@ public class ModEventBusEvents {
                                                    event) {
         event.getRegistry().registerAll(
                 new SilkTouchTntModifer.ModifierSerializer().setRegistryName
-                        (new ResourceLocation(WorldGenMod.MODID, "silk_touch_explosion.json"))
+                        (new ResourceLocation(WorldGenMod.MODID, "mining_explosives"))
         );
     }
 }

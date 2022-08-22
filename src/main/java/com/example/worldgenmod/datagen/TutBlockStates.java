@@ -6,14 +6,18 @@ import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.FrontAndTop;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import java.util.function.Function;
+
 import static com.example.worldgenmod.client.GeneratorModelLoader.GENERATOR_LOADER;
 
-public class TutBlockStates extends BlockStateProvider {
+public class TutBlockStates extends BlockStateProvider implements DataProvider {
 
     public TutBlockStates(DataGenerator gen, ExistingFileHelper helper) {
         super(gen, WorldGenMod.MODID, helper);
@@ -51,11 +55,11 @@ public class TutBlockStates extends BlockStateProvider {
         BlockModelBuilder miningExplosivesModel = models().cube("mining_explosives",
                 modLoc("block/mining_explosives_bottom"),
                 modLoc("block/mining_explosives_top"),
-                modLoc("block/mining_explosives_nontarget_side"),
-                modLoc("block/mining_explosives_nontarget_side"),
-                modLoc("block/mining_explosives_nontarget_side"),
-                modLoc("block/mining_explosives_nontarget_side"));
-        directionalBlock(Registration.MINING_EXPLOSIVES.get(), miningExplosivesModel);
+                modLoc("block/mining_explosives_side"),
+                modLoc("block/mining_explosives_side"),
+                modLoc("block/mining_explosives_side"),
+                modLoc("block/mining_explosives_side"));
+        directionalBlockCorrect(Registration.MINING_EXPLOSIVES.get(), miningExplosivesModel);
     }
 
     //Helpers
@@ -140,5 +144,24 @@ public class TutBlockStates extends BlockStateProvider {
                 .addModel();
     }
 
+    private static final int DEFAULT_ANGLE_OFFSET = 180;
+    public void directionalBlockCorrect(Block block, ModelFile model) {
+        directionalBlockCorrect(block, model, DEFAULT_ANGLE_OFFSET);
+    }
 
+    public void directionalBlockCorrect(Block block, ModelFile model, int angleOffset) {
+        directionalBlockCorrect(block, $ -> model, angleOffset);
+    }
+
+    public void directionalBlockCorrect(Block block, Function<BlockState, ModelFile> modelFunc, int angleOffset) {
+        getVariantBuilder(block)
+                .forAllStates(state -> {
+                    Direction dir = state.getValue(BlockStateProperties.FACING);
+                    return ConfiguredModel.builder()
+                            .modelFile(modelFunc.apply(state))
+                            .rotationX(dir == Direction.DOWN ? 90 : dir.getAxis().isHorizontal() ? 0 : 270)
+                            .rotationY(dir.getAxis().isVertical() ? 0 : (((int) dir.toYRot()) + angleOffset) % 360)
+                            .build();
+                });
+    }
 }
