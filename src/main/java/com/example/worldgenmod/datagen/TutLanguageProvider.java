@@ -25,5 +25,6 @@ public class TutLanguageProvider extends LanguageProvider {
         add(Registration.GENERATOR.get(), "Generator");
         add(Registration.ORIENTATION_TEST_BLOCK.get(), "Test Block for Orientation");
         add(Registration.MINING_EXPLOSIVES.get(), "Mining Explosives");
+        add(Registration.MOLTEN_IRON_BUCKET.get(), "Molten Iron Bucket");
     }
 }
