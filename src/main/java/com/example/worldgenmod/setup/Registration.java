@@ -91,8 +91,6 @@ public class Registration {
                     .fireImmune()
                     .build("primed_mining_explosives"));
 
-    //Fluids Registration
-    public static final RegistryObject<FlowingFluid> MOLTEN_IRON
     
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPS));
