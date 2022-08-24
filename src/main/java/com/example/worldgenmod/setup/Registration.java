@@ -14,6 +14,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -31,6 +33,7 @@ public class Registration {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MODID);
 
     public static void init() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -39,6 +42,7 @@ public class Registration {
         BLOCK_ENTITIES.register(bus);
         CONTAINERS.register(bus);
         ENTITIES.register(bus);
+        FLUIDS.register(bus);
     }
 
     // Properties Registration
@@ -77,6 +81,7 @@ public class Registration {
     public static final RegistryObject<MiningExplosives> MINING_EXPLOSIVES = BLOCKS.register("mining_explosives", MiningExplosives::new);
     public static final RegistryObject<Item> MINING_EXPLOSIVES_ITEM = fromBlock(MINING_EXPLOSIVES);
 
+    //Mining Tnt Primed Registration
     public static final RegistryObject<EntityType<PrimedMiningExplosives>> PRIMED_MINING_EXPLOSIVES =
             ENTITIES.register("primed_mining_explosives",
             () -> EntityType.Builder.<PrimedMiningExplosives>of(PrimedMiningExplosives::new, MobCategory.MISC)
@@ -86,7 +91,9 @@ public class Registration {
                     .fireImmune()
                     .build("primed_mining_explosives"));
 
-
+    //Fluids Registration
+    public static final RegistryObject<FlowingFluid> MOLTEN_IRON
+    
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPS));
     }
