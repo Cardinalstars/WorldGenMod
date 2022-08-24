@@ -15,8 +15,13 @@ public class DataGenerators {
         if (event.includeServer()) {
             generator.addProvider(new TutRecipes(generator));
             generator.addProvider(new ModLootTableProvider(generator));
+
             TutBlockTags blockTags = new TutBlockTags(generator, event.getExistingFileHelper());
             generator.addProvider(blockTags);
+
+            FluidTags fluidTags = new FluidTags(generator, WorldGenMod.MODID, event.getExistingFileHelper());
+            generator.addProvider(fluidTags);
+
             generator.addProvider(new TutItemTags(generator, blockTags, event.getExistingFileHelper()));
         }
         if (event.includeClient()) {

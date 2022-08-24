@@ -4,6 +4,7 @@
   "block.worldgenmod.test_block_orientation": "Test Block for Orientation",
   "block.worldgenmod.weird_ore_deepslate": "Weird Deepslate Ore",
   "block.worldgenmod.weird_ore_overworld": "Weird Ore",
+  "item.worldgenmod.molten_iron_bucket": "Molten Iron Bucket",
   "item.worldgenmod.weird_ore_chunk": "Weird Raw Chunk",
   "item.worldgenmod.weird_ore_ingot": "Weird Ingot",
   "itemGroup.worldgenmod": "WorldGenMod"

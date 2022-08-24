@@ -3,21 +3,29 @@ package com.example.worldgenmod.setup;
 import com.example.worldgenmod.Blocks.*;
 import com.example.worldgenmod.Entities.PrimedMiningExplosives;
 import com.example.worldgenmod.WorldGenMod;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -67,6 +75,8 @@ public class Registration {
     public static final TagKey<Block> WEIRD_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(WorldGenMod.MODID, "weird_ore"));
     public static final TagKey<Item> WEIRD_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(WorldGenMod.MODID, "weird_ore"));
 
+    //Fluid tags
+    public static final TagKey<Fluid> MOLTEN_IRON = TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation(WorldGenMod.MODID, "molten_iron"));
 
 
     // Generator Registration
@@ -91,7 +101,32 @@ public class Registration {
                     .fireImmune()
                     .build("primed_mining_explosives"));
 
-    
+    //Fluids Registration
+    public static final ResourceLocation LAVA_STILL_RL = new ResourceLocation("block/lava_still");
+    public static final ResourceLocation LAVA_FLOWING_RL = new ResourceLocation("block/lava_flow");
+    public static final ResourceLocation LAVA_OVERLAY_RL = new ResourceLocation("block/lava_overlay");
+
+    public static final RegistryObject<FlowingFluid> MOLTEN_IRON_SOURCE = FLUIDS.register
+            ("molten_iron_source", () -> new ForgeFlowingFluid.Source(Registration.MOLTEN_IRON_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> MOLTEN_IRON_FLOWING = FLUIDS.register
+            ("molten_iron_flowing", () -> new ForgeFlowingFluid.Flowing(Registration.MOLTEN_IRON_PROPERTIES));
+
+    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_FLUID_BLOCK = BLOCKS.register("molten_iron",
+            () -> new LiquidBlock(() -> MOLTEN_IRON_SOURCE.get(), BlockBehaviour.Properties.of(Material.LAVA).noCollission()
+                    .strength(100f).noDrops()));
+
+    public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register("molten_iron_bucket",
+            () -> new BucketItem(MOLTEN_IRON_SOURCE,
+                    new Item.Properties().stacksTo(1)));
+
+    public static final ForgeFlowingFluid.Properties MOLTEN_IRON_PROPERTIES = new ForgeFlowingFluid.Properties
+            (() -> MOLTEN_IRON_SOURCE.get(), () -> MOLTEN_IRON_FLOWING.get(),
+                    FluidAttributes.builder(LAVA_STILL_RL, LAVA_FLOWING_RL).density(15).sound(SoundEvents.LAVA_AMBIENT)
+                            .luminosity(2).viscosity(5).color(0xbffcba03)).slopeFindDistance(4).levelDecreasePerBlock(2)
+            .bucket(() -> MOLTEN_IRON_BUCKET.get()).block( () -> MOLTEN_IRON_FLUID_BLOCK.get());
+
+    //helper
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPS));
     }
