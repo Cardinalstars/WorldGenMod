@@ -23,7 +23,9 @@ public class DataGenerators {
             generator.addProvider(fluidTags);
 
             generator.addProvider(new TutItemTags(generator, blockTags, event.getExistingFileHelper()));
+            generator.addProvider(new GLMProvider(generator, WorldGenMod.MODID));
         }
+
         if (event.includeClient()) {
             generator.addProvider(new TutBlockStates(generator, event.getExistingFileHelper()));
             generator.addProvider(new TutItemModels(generator, event.getExistingFileHelper()));

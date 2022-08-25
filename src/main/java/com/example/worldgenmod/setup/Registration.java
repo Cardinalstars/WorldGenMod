@@ -3,6 +3,7 @@ package com.example.worldgenmod.setup;
 import com.example.worldgenmod.Blocks.*;
 import com.example.worldgenmod.Entities.PrimedMiningExplosives;
 import com.example.worldgenmod.WorldGenMod;
+import com.example.worldgenmod.event.loot.SilkTouchTntModifer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -42,6 +44,7 @@ public class Registration {
     public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MODID);
+    public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLMS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, MODID);
 
     public static void init() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -51,6 +54,7 @@ public class Registration {
         CONTAINERS.register(bus);
         ENTITIES.register(bus);
         FLUIDS.register(bus);
+        GLMS.register(bus);
     }
 
     // Properties Registration
@@ -104,7 +108,6 @@ public class Registration {
     //Fluids Registration
     public static final ResourceLocation LAVA_STILL_RL = new ResourceLocation("block/lava_still");
     public static final ResourceLocation LAVA_FLOWING_RL = new ResourceLocation("block/lava_flow");
-    public static final ResourceLocation LAVA_OVERLAY_RL = new ResourceLocation("block/lava_overlay");
 
     public static final RegistryObject<FlowingFluid> MOLTEN_IRON_SOURCE = FLUIDS.register
             ("molten_iron_source", () -> new ForgeFlowingFluid.Source(Registration.MOLTEN_IRON_PROPERTIES));
@@ -125,6 +128,10 @@ public class Registration {
                     FluidAttributes.builder(LAVA_STILL_RL, LAVA_FLOWING_RL).density(15).sound(SoundEvents.LAVA_AMBIENT)
                             .luminosity(2).viscosity(5).color(0xbffcba03)).slopeFindDistance(4).levelDecreasePerBlock(2)
             .bucket(() -> MOLTEN_IRON_BUCKET.get()).block( () -> MOLTEN_IRON_FLUID_BLOCK.get());
+
+    //GLM Registration
+    public static final RegistryObject<GlobalLootModifierSerializer<SilkTouchTntModifer>> SILK_TOUCH_TNT_MOD = GLMS.register("mining_explosives",
+            () -> new SilkTouchTntModifer.ModifierSerializer());
 
     //helper
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {

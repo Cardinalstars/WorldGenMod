@@ -20,7 +20,7 @@ import static com.example.worldgenmod.WorldGenMod.LOGGER;
 
 public class SilkTouchTntModifer extends LootModifier {
 
-    protected SilkTouchTntModifer(LootItemCondition[] conditionsIn) {
+    public SilkTouchTntModifer(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
 

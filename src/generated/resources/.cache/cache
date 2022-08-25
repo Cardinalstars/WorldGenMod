@@ -17,6 +17,7 @@ cd53d8b67dba51af04e73b1c2c4139971cf8adef assets/worldgenmod/models/item/weird_or
 ba942f86be144506c3b7899c3471768eaea40525 assets/worldgenmod/models/item/weird_ore_deepslate.json
 2d154513984986157d2dbb8abbaa1eed3603d920 assets/worldgenmod/models/item/weird_ore_ingot.json
 a4bb05622d8eff9fd2f6ca41e86b7cc76ce0d7b0 assets/worldgenmod/models/item/weird_ore_overworld.json
+7741915ef35d75ee24fea4fede2e56f300db35c9 data/forge/loot_modifiers/global_loot_modifiers.json
 ee2513701257264f71020bb12717731a29442264 data/forge/tags/blocks/ores.json
 b5bfcbecd5e1ff9776f04d089b0ed2ddf1269c0e data/forge/tags/items/ingots.json
 f8323a8abc73abc3ce63cf4de9611fc6c31d42c2 data/forge/tags/items/ores.json
@@ -26,6 +27,7 @@ f8323a8abc73abc3ce63cf4de9611fc6c31d42c2 data/forge/tags/items/ores.json
 4567ce9c78e8c56f9076727c0287513c59fcef07 data/minecraft/recipes/weird_ingot2.json
 2f017a9ff261e1d5bd7779c2a3a6d7e435bc00ca data/minecraft/tags/blocks/mineable/pickaxe.json
 0514032220c3d3fc41f1330d501f872f74b66fb8 data/minecraft/tags/blocks/needs_iron_tool.json
+7dee8b156cf0e54dbfb3fe3075b58008415fe4f4 data/worldgenmod/loot_modifiers/mining_explosives.json
 d78c0533551521ec0b090792ee0108fe24790654 data/worldgenmod/loot_tables/blocks/generator.json
 e45788a61dab1411419e65a49ed326c88f6a35e2 data/worldgenmod/loot_tables/blocks/mining_explosives.json
 5eaa32be619849806697e25cdcabb9cfc829b819 data/worldgenmod/loot_tables/blocks/test_block_orientation.json

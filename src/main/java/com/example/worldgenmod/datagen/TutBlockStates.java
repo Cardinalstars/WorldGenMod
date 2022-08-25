@@ -10,6 +10,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.model.FluidModel;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -62,6 +63,9 @@ public class TutBlockStates extends BlockStateProvider implements DataProvider {
         directionalBlockCorrect(Registration.MINING_EXPLOSIVES.get(), miningExplosivesModel);
     }
 
+    private void registerMoltenIron() {
+
+    }
     //Helpers
     private void registerOrientationBlock(Block block, ModelFile model) {
         VariantBlockStateBuilder bld = getVariantBuilder(block);
