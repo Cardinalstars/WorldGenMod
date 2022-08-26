@@ -7,6 +7,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import static com.example.worldgenmod.setup.fluids.FluidRegistration.MOLTEN_IRON;
+
 public class TutItemModels extends ItemModelProvider {
 
     public TutItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
@@ -33,7 +35,7 @@ public class TutItemModels extends ItemModelProvider {
         withExistingParent(Registration.ORIENTATION_TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_orientation_block"));
         withExistingParent(Registration.MINING_EXPLOSIVES.get().getRegistryName().getPath(), modLoc("block/mining_explosives"));
 
-        singleTexture(Registration.MOLTEN_IRON_BUCKET.get().getRegistryName().getPath(),
+        singleTexture(MOLTEN_IRON.getBucket().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 ("layer0"),
                 modLoc("items/molten_iron_bucket"));

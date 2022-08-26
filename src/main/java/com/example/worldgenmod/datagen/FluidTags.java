@@ -8,6 +8,8 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
+import static com.example.worldgenmod.setup.fluids.FluidRegistration.MOLTEN_IRON;
+
 public class FluidTags extends FluidTagsProvider {
 
     public FluidTags(DataGenerator pGenerator, String modId, @Nullable ExistingFileHelper existingFileHelper) {
@@ -17,11 +19,11 @@ public class FluidTags extends FluidTagsProvider {
     @Override
     protected void addTags() {
         tag(Registration.MOLTEN_IRON)
-                .add(Registration.MOLTEN_IRON_SOURCE.get())
-                .add(Registration.MOLTEN_IRON_FLOWING.get());
+                .add(MOLTEN_IRON.getStill())
+                .add(MOLTEN_IRON.getFlowing());
         tag(net.minecraft.tags.FluidTags.LAVA)
-                .add(Registration.MOLTEN_IRON_SOURCE.get())
-                .add(Registration.MOLTEN_IRON_FLOWING.get());
+                .add(MOLTEN_IRON.getStill())
+                .add(MOLTEN_IRON.getFlowing());
     }
 
     @Override

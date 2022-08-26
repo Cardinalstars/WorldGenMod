@@ -2,34 +2,23 @@ package com.example.worldgenmod.setup;
 
 import com.example.worldgenmod.Blocks.*;
 import com.example.worldgenmod.Entities.PrimedMiningExplosives;
-import com.example.worldgenmod.Fluids.MoltenIron;
 import com.example.worldgenmod.WorldGenMod;
 import com.example.worldgenmod.event.loot.SilkTouchTntModifer;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,6 +26,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 
 import static com.example.worldgenmod.WorldGenMod.MODID;
+import static com.example.worldgenmod.setup.fluids.FluidRegistration.FLUIDS;
 
 public class Registration {
 
@@ -45,7 +35,6 @@ public class Registration {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
-    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MODID);
     public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLMS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, MODID);
 
     public static void init() {
@@ -106,21 +95,6 @@ public class Registration {
                     .updateInterval(10)
                     .fireImmune()
                     .build("primed_mining_explosives"));
-
-    //Fluids Registration
-    public static final RegistryObject<FlowingFluid> MOLTEN_IRON_SOURCE = FLUIDS.register
-            ("molten_iron_source", () -> new MoltenIron.Source());
-
-    public static final RegistryObject<FlowingFluid> MOLTEN_IRON_FLOWING = FLUIDS.register
-            ("molten_iron_flowing", () -> new MoltenIron.Flowing());
-
-    public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register("molten_iron_bucket",
-            () -> new BucketItem(MOLTEN_IRON_SOURCE,
-                    new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1)));
-
-    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_BLOCK = BLOCKS.register("molten_iron",
-            () -> new LiquidBlock(() -> MOLTEN_IRON_SOURCE.get(), BlockBehaviour.Properties.of(Material.LAVA)
-                    .noCollission().strength(100f).noDrops()));
 
     //GLM Registration
     public static final RegistryObject<GlobalLootModifierSerializer<SilkTouchTntModifer>> SILK_TOUCH_TNT_MOD = GLMS.register("mining_explosives",

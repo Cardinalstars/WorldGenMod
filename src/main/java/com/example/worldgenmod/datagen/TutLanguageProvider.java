@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
 import static com.example.worldgenmod.setup.ModSetup.TAB_NAME;
+import static com.example.worldgenmod.setup.fluids.FluidRegistration.MOLTEN_IRON;
 
 public class TutLanguageProvider extends LanguageProvider {
 
@@ -25,6 +26,6 @@ public class TutLanguageProvider extends LanguageProvider {
         add(Registration.GENERATOR.get(), "Generator");
         add(Registration.ORIENTATION_TEST_BLOCK.get(), "Test Block for Orientation");
         add(Registration.MINING_EXPLOSIVES.get(), "Mining Explosives");
-        add(Registration.MOLTEN_IRON_BUCKET.get(), "Molten Iron Bucket");
+        add(MOLTEN_IRON.getBucket(), "Molten Iron Bucket");
     }
 }

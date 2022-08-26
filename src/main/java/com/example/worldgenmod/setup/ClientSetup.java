@@ -14,12 +14,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import static com.example.worldgenmod.setup.fluids.FluidRegistration.MOLTEN_IRON;
+
 @Mod.EventBusSubscriber(modid = WorldGenMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetup {
     public static void init(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_BLOCK.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_SOURCE.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_FLOWING.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(MOLTEN_IRON.getBlock(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(MOLTEN_IRON.getStill(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(MOLTEN_IRON.getFlowing(), RenderType.translucent());
     }
     @SubscribeEvent
     public static void onModelRegistryEvent(ModelRegistryEvent event) {
