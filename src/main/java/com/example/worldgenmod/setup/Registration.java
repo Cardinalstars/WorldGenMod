@@ -2,11 +2,13 @@ package com.example.worldgenmod.setup;
 
 import com.example.worldgenmod.Blocks.*;
 import com.example.worldgenmod.Entities.PrimedMiningExplosives;
+import com.example.worldgenmod.Fluids.MoltenIron;
 import com.example.worldgenmod.WorldGenMod;
 import com.example.worldgenmod.event.loot.SilkTouchTntModifer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -106,28 +108,19 @@ public class Registration {
                     .build("primed_mining_explosives"));
 
     //Fluids Registration
-    public static final ResourceLocation LAVA_STILL_RL = new ResourceLocation("block/lava_still");
-    public static final ResourceLocation LAVA_FLOWING_RL = new ResourceLocation("block/lava_flow");
-
     public static final RegistryObject<FlowingFluid> MOLTEN_IRON_SOURCE = FLUIDS.register
-            ("molten_iron_source", () -> new ForgeFlowingFluid.Source(Registration.MOLTEN_IRON_PROPERTIES));
+            ("molten_iron_source", () -> new MoltenIron.Source());
 
     public static final RegistryObject<FlowingFluid> MOLTEN_IRON_FLOWING = FLUIDS.register
-            ("molten_iron_flowing", () -> new ForgeFlowingFluid.Flowing(Registration.MOLTEN_IRON_PROPERTIES));
-
-    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_FLUID_BLOCK = BLOCKS.register("molten_iron",
-            () -> new LiquidBlock(() -> MOLTEN_IRON_SOURCE.get(), BlockBehaviour.Properties.of(Material.LAVA).noCollission()
-                    .strength(100f).noDrops()));
+            ("molten_iron_flowing", () -> new MoltenIron.Flowing());
 
     public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register("molten_iron_bucket",
             () -> new BucketItem(MOLTEN_IRON_SOURCE,
-                    new Item.Properties().stacksTo(1)));
+                    new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1)));
 
-    public static final ForgeFlowingFluid.Properties MOLTEN_IRON_PROPERTIES = new ForgeFlowingFluid.Properties
-            (() -> MOLTEN_IRON_SOURCE.get(), () -> MOLTEN_IRON_FLOWING.get(),
-                    FluidAttributes.builder(LAVA_STILL_RL, LAVA_FLOWING_RL).density(15).sound(SoundEvents.LAVA_AMBIENT)
-                            .luminosity(2).viscosity(5).color(0xbffcba03)).slopeFindDistance(4).levelDecreasePerBlock(2)
-            .bucket(() -> MOLTEN_IRON_BUCKET.get()).block( () -> MOLTEN_IRON_FLUID_BLOCK.get());
+    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_BLOCK = BLOCKS.register("molten_iron",
+            () -> new LiquidBlock(() -> MOLTEN_IRON_SOURCE.get(), BlockBehaviour.Properties.of(Material.LAVA)
+                    .noCollission().strength(100f).noDrops()));
 
     //GLM Registration
     public static final RegistryObject<GlobalLootModifierSerializer<SilkTouchTntModifer>> SILK_TOUCH_TNT_MOD = GLMS.register("mining_explosives",

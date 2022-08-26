@@ -3,6 +3,7 @@ package com.example.worldgenmod.datagen;
 import com.example.worldgenmod.setup.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -16,6 +17,9 @@ public class FluidTags extends FluidTagsProvider {
     @Override
     protected void addTags() {
         tag(Registration.MOLTEN_IRON)
+                .add(Registration.MOLTEN_IRON_SOURCE.get())
+                .add(Registration.MOLTEN_IRON_FLOWING.get());
+        tag(net.minecraft.tags.FluidTags.LAVA)
                 .add(Registration.MOLTEN_IRON_SOURCE.get())
                 .add(Registration.MOLTEN_IRON_FLOWING.get());
     }

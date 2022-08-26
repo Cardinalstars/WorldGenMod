@@ -17,7 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @Mod.EventBusSubscriber(modid = WorldGenMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetup {
     public static void init(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_FLUID_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_SOURCE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(Registration.MOLTEN_IRON_FLOWING.get(), RenderType.translucent());
     }

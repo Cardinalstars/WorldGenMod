@@ -27,6 +27,7 @@ f8323a8abc73abc3ce63cf4de9611fc6c31d42c2 data/forge/tags/items/ores.json
 4567ce9c78e8c56f9076727c0287513c59fcef07 data/minecraft/recipes/weird_ingot2.json
 2f017a9ff261e1d5bd7779c2a3a6d7e435bc00ca data/minecraft/tags/blocks/mineable/pickaxe.json
 0514032220c3d3fc41f1330d501f872f74b66fb8 data/minecraft/tags/blocks/needs_iron_tool.json
+21de7ae9fc877923dce6a5ee669c04a22d3b7c82 data/minecraft/tags/fluids/lava.json
 7dee8b156cf0e54dbfb3fe3075b58008415fe4f4 data/worldgenmod/loot_modifiers/mining_explosives.json
 d78c0533551521ec0b090792ee0108fe24790654 data/worldgenmod/loot_tables/blocks/generator.json
 e45788a61dab1411419e65a49ed326c88f6a35e2 data/worldgenmod/loot_tables/blocks/mining_explosives.json

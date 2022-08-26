@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "worldgenmod:molten_iron_source",
+    "worldgenmod:molten_iron_flowing"
+  ]
+}
